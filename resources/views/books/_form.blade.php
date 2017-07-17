@@ -1,4 +1,4 @@
-    <div class="form-group{{ $errors->has('title') ? 'has-error' : '' }}">
+<div class="form-group{{ $errors->has('title') ? 'has-error' : '' }}">
 	{!! Form::label('title','Judul',['class'=>'col-md-2 control-label']) !!}
 	<div class="col-md-4">
 		{!! Form::text('title',null,['class'=>'form-control']) !!}
@@ -19,6 +19,9 @@
 	<div class="col-md-4">
 		{!! Form::number('amount',null,['class'=>'form-control']) !!}
 		{!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+		@if (isset($book))
+			<p class="help-block">{{ $book->borrowed }} Buku Sedang Dipinjam</p>
+		@endif
 	</div>
 </div>
 
@@ -39,4 +42,3 @@
 	<div class="col-md-4 col-md-offset-2">
 		{!! Form::submit('Simpan', ['class'=>'btn btn-primary']) !!}
 	</div>
-</div>
